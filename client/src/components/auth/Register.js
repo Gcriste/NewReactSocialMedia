@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,9 +29,9 @@ const Register = ({ setAlert, register }) => {
     }
   };
 
-//   if (isAuthenticated) {
-//     return <Redirect to='/dashboard' />;
-//   }
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <Fragment>
@@ -92,10 +92,15 @@ const Register = ({ setAlert, register }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool
 };
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 
 export default connect(
- null,
+ mapStateToProps,
   { setAlert, register }
 )(Register);
