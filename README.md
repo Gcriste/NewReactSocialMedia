@@ -6,4 +6,6 @@
 
 ### This app is still in progress...
 
+### Technologies used: Reactjs, Node, Redux, JSX, Javascript, HTML, mongoose, mongodb
+
 
